@@ -1,7 +1,12 @@
 .resigned {
-	background-color: red!important;
+	background-color: pink!important;
 }
 
 .box-header.with-border {
 	padding: 15px!important;
+}
+
+table thead th:last-child:after {
+    content: "";
+    display: none!important;
 }

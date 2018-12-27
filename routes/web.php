@@ -17,5 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Route::get('/emp/', ''); D KO PA ALAM CONTENT NG EMPLOEYES PAGE
+
 Route::resource('employees', 'EmployeesController');
 Route::get('/employees', 'EmployeesController@index')->name('employees');

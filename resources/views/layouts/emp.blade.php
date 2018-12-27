@@ -95,7 +95,7 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-               <!--  <form action="#" method="get" class="sidebar-form">
+                <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
@@ -103,21 +103,11 @@
                             </button>
                         </span>
                     </div>
-                </form> -->
+                </form>
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MANAGEMENT</li>
-                    <li @if (Request::path() =='/' || Request::path() =='home') class="active" @endif><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                    <li @if (Request::path() =='employees') class="active" @endif><a href="{{ route('employees') }}"><i class="fa fa-users"></i> <span>Employees</span></a></li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-link"></i> <span>Multilevel</span>
-                            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
+                    <li class="active"><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('employees') }}"><i class="fa fa-users"></i> <span>My Projects</span></a></li>
                 </ul>
             </section>
         </aside>

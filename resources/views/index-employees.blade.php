@@ -32,16 +32,24 @@
 							<th>Lastname</th>
 							<th>Email</th>
 							<th>Phone</th>
+							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach($employees as $emp)
 						<tr class="{{ $emp->status == 1 ? "ok" : "resigned" }}">
-							<td>{{ $emp->id }}</td>
+							<td>{{ $emp->id }}</a></td>
 							<td>{{ $emp->firstname }}</td>
 							<td>{{ $emp->lastname }}</td>
 							<td>{{ $emp->email }}</td>
 							<td>{{ $emp->phone }}</td>
+							<td class="text-center">
+								<ul class="list-inline">
+									<li><a href="{{ url('/employees/'.$emp->id) }}"><i class="fa fa-search"></i> View</a></li>
+									<li><a href="{{ url('/employees/'.$emp->id.'/edit') }}"><i class="fa fa-edit"></i> Edit</a></li>
+									<li><a onclick="return confirm('Delete?')" class="text-danger" href="{{ url('/employees/'.$emp->id.'/edit') }}"><i class="fa fa-trash"></i> Delete</a></li>
+								</ul>
+							</td>
 						</tr>
 						@endforeach
 					</tbody>
