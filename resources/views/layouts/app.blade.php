@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    @if (!Auth::user() )
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @endif
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -27,6 +30,7 @@
                 <span class="logo-lg"><b>Admin</b>LTE</span>
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
+                @if (Auth::User() )
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
@@ -51,14 +55,20 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left"><a href="#" class="btn btn-default btn-flat">Profile</a></div>
-                                    <div class="pull-right"><a href="#" class="btn btn-default btn-flat">Sign out</a></div>
+                                    <div class="pull-right"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </div>
+                @endif
             </nav>
         </header>
+        @if (Auth::User() )
         <aside class="main-sidebar">
             <section class="sidebar">
                 <div class="user-panel">
@@ -96,13 +106,17 @@
                 </ul>
             </section>
         </aside>
-        <div class="content-wrapper">
+        @endif 
+        <div @if (Auth::User() ) class="content-wrapper" @endif>
             @yield('content')
         </div>
+
+        @if (Auth::User() ) 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">Anything you want</div>
             <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
         </footer>
+        @endif
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
