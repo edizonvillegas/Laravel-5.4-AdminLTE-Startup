@@ -18,4 +18,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('employees', 'EmployeesController');
-Route::get('/employees', 'EmployeesController@index');
+Route::get('/employees', 'EmployeesController@index')->name('employees');

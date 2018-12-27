@@ -19,6 +19,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $employees = new \App\Employees;
+        $result['count'] = $employees::count();
+
+        $result['active'] = $employees::where('status', 1)->count();
+        $result['inactive'] = $employees::where('status', 0)->count();
+        
+        return view('home')->withData($result);
     }
 }

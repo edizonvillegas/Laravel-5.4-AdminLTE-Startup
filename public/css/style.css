@@ -1,19 +1,7 @@
-body,
-.wrapper {
-	background-color: #ecf0f5!important;
+.resigned {
+	background-color: red!important;
 }
 
-.skin-blue .main-header .logo {
-    background-color: #3c8dbc;
-}
-
-.box-header {
-    color: #fff;
-    background: #3c8dbc;
-}
-
-@media (max-width: 767px) {
-	nav {
-		display: none;
-	}
+.box-header.with-border {
+	padding: 15px!important;
 }

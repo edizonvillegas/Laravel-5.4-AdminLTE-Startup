@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,13 +20,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     @if (!Auth::user() )
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    @else
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @endif
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
-            <a href="index2.html" class="logo">
+            <a href="{{ route('home') }}" class="logo">
                 <span class="logo-mini"><b>A</b>LT</span>
                 <span class="logo-lg"><b>Admin</b>LTE</span>
             </a>
@@ -65,6 +68,18 @@
                         </li>
                     </ul>
                 </div>
+                @else
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            @if (Request::path() != 'register')
+                                <a href="{{ route('register') }}">Register</a>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
                 @endif
             </nav>
         </header>
@@ -90,9 +105,9 @@
                     </div>
                 </form>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">HEADER</li>
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                    <li class="header">MANAGEMENT</li>
+                    <li class="active"><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                    <li><a href="{{ route('employees') }}"><i class="fa fa-users"></i> <span>Employees</span></a></li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-link"></i> <span>Multilevel</span>
@@ -119,6 +134,13 @@
         @endif
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+        <script>
+          $(function () {
+            $('#dataTable').DataTable()
+          })
+        </script>
     </body>
 </html>

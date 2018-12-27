@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="box box-primary">
-                <div class="box-header">Members Area</div>
+                <div class="box-header"><i class="fa fa-key"></i> Members Area</div>
                 <div class="box-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
