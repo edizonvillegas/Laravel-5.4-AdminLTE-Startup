@@ -8,14 +8,13 @@
 	</ol>
 </section>
 <section class="content container-fluid">
-	<div class="box">
+	<div class="box box-primary">
 		<div class="box-header with-border"><h3 class="box-title">All Employees</h3>
 			<div class="box-tools pull-right">
-                <ul class="list-inline">
-                	<li><a href="{{ url('/employees/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> New Employee</a></li>
-                </ul>
-            </div>
-           
+				<ul class="list-inline">
+					<li><a href="{{ url('/employees/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> New Employee</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="box-body">
 			@if(Session::has('success'))
@@ -38,16 +37,16 @@
 					<tbody>
 						@foreach($employees as $emp)
 						<tr class="{{ $emp->status == 1 ? "ok" : "resigned" }}">
-							<td>{{ $emp->id }}</a></td>
+							<td>{{ $emp->employees_id }}</a></td>
 							<td>{{ $emp->firstname }}</td>
 							<td>{{ $emp->lastname }}</td>
 							<td>{{ $emp->email }}</td>
 							<td>{{ $emp->phone }}</td>
 							<td class="text-center">
 								<ul class="list-inline">
-									<li><a href="{{ url('/employees/'.$emp->id) }}"><i class="fa fa-search"></i> View</a></li>
-									<li><a href="{{ url('/employees/'.$emp->id.'/edit') }}"><i class="fa fa-edit"></i> Edit</a></li>
-									<li><a onclick="return confirm('Delete?')" class="text-danger" href="{{ url('/employees/'.$emp->id.'/edit') }}"><i class="fa fa-trash"></i> Delete</a></li>
+									<li><a href="{{ url('/employees/'.$emp->employees_id) }}"><i class="fa fa-search"></i> View</a></li>
+									<li><a href="{{ url('/employees/'.$emp->employees_id.'/edit') }}"><i class="fa fa-edit"></i> Edit</a></li>
+									<li><a onclick="return confirm('Delete?')" class="text-danger" href="{{ url('/employees/'.$emp->employees_id.'/edit') }}"><i class="fa fa-trash"></i> Delete</a></li>
 								</ul>
 							</td>
 						</tr>
@@ -55,6 +54,7 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
 	</div>
 </section>
 @endsection

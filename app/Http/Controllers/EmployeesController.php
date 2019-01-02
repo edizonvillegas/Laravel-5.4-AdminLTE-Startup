@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employees;
+use App\Project;
 use Session;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -63,7 +64,7 @@ class EmployeesController extends Controller
 
     public function show($id)
     {
-        $data = Employees::where('id', $id)->first();
+        $data = Employees::with(['tasks', 'tasks.projects'])->where('employees_id', $id)->first();
         return view('show-employee')->withInfo($data);
     }
 
