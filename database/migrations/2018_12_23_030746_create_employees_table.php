@@ -13,17 +13,16 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        if( !Schema::hasTable('employees') ) {
+       if( !Schema::hasTable('employees') ) {
             Schema::create('employees', function (Blueprint $table) {
-                $table->increments('id');
+                $table->increments('employee_id');
                 $table->string('userRandomId');
                 $table->string('firstname');
                 $table->string('lastname');
                 $table->string('gender');
-                $table->string('email');
                 $table->string('birthday');
-                $table->text('address');
                 $table->string('phone');
+                $table->text('photo');
                 $table->boolean('status');
                 $table->timestamps();
             });

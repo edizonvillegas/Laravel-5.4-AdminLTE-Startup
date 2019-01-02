@@ -17,7 +17,8 @@ class EmployeesTableSeeder extends Seeder
 
         for ($i = 0; $i < $limit; $i++) {
         	
-        	$gender = $faker->randomElement(['male', 'female']);
+            $gender = $faker->randomElement(['male', 'female']);
+        	$status = $faker->randomElement([1, 2]);
 
             DB::table('employees')->insert([ //,
                 'userRandomId' => str_random(60),
@@ -28,7 +29,8 @@ class EmployeesTableSeeder extends Seeder
                 'birthday' => $faker->date($format = 'Y-m-d'),
                 'address' => $faker->address,
                 'phone' => $faker->phoneNumber,
-                'status' => $faker->boolean($chanceOfGettingTrue = 90)
+                'photo' => '',
+                'status' => $status
             ]);
         }
     }

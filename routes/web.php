@@ -14,10 +14,16 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth'] ], function() {
+	Route::get('/', 'HomeController@index')->name('home');
 
-//Route::get('/emp/', ''); D KO PA ALAM CONTENT NG EMPLOEYES PAGE
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('employees', 'EmployeesController');
-Route::get('/employees', 'EmployeesController@index')->name('employees');
+	Route::resource('employees/info', 'EmployeesController');
+
+	Route::get('/employees', 'EmployeesController@index');
+
+	Route::resource('projects', 'ProjectsController');
+
+	Route::get('/projects', 'ProjectsController@index')->name('projects');
+});

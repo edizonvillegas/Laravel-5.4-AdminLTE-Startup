@@ -1,29 +1,59 @@
 <?php
 
 namespace App;
-
-use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Employees extends Model
 {
 
-	public $timestamps = false;
-    protected $fillable = ['firstname', 'lastname', 'gender', 'email', 'address', 'birthday', 'userRandomId', 'photo', 'status'];
+    protected $fillable = [
+        'firstname',
+        'lastname',
+        'gender',
+        'birthday',
+        'phone',
+        'userRandomId',
+        'photo',
+        'status'
+    ];
 
-    // public static function tasks($id)
-    // {
-    //     return DB::table('employees')
-    //         ->select('employees.*', 'projects.*')
-    //         ->leftjoin('tasks', 'tasks.project_coder', '=', 'employees.employees_id')
-    //         ->leftjoin('projects', 'projects.projects_id', '=', 'tasks.project_id')
-    //         ->where('employees.employees_id', '=', $id)
-    //         ->get();
-    // }
-
-    public function tasks()
+   public function tasks()
     {
-    	return $this->hasMany('\App\Task', 'project_coder', 'employees_id');
+    	return $this->hasMany('\App\Task', 'project_coder', 'employee_id');
     }
 
+    public function statuses()
+    {
+        return $this->hasOne('\App\Status', 'status_id', 'status');
+    }
+
+    public function email()
+    {
+        return $this->hasOne('\App\User', 'id', 'employee_id');
+    }
+
+    public function family()
+    {
+        return $this->hasOne('\App\Family', 'family_id', 'employee_id');
+    }
+
+    public function address()
+    {
+        return $this->hasOne('\App\Address', 'address_id', 'employee_id');
+    }
+
+    public function education()
+    {
+        return $this->hasOne('\App\Education', 'education_id', 'employee_id');
+    }
+    
+    public function school_address()
+    {
+        return $this->hasOne('\App\School_address', 'school_address_id', 'employee_id');
+    }
+    
+    public function experiences()
+    {
+        return $this->hasOne('\App\Experience', 'experienced_user_id', 'userRandomId');
+    }
 }

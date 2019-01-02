@@ -2,11 +2,75 @@
 	background-color: pink!important;
 }
 
-.box-header.with-border {
-	padding: 15px!important;
-}
-
 table thead th:last-child:after {
     content: "";
     display: none!important;
+}
+
+table .list-inline {
+	margin-bottom: 0!important;
+}
+
+.custom-header-padding {
+	padding: 10px 15px!important;
+	margin-bottom: 10px;
+}
+
+.custom-header-padding02 {
+	padding: 15px!important;
+}
+
+.custom-header-padding03 {
+	padding: 3px 15px!important;
+}
+
+.box-title {
+	font-weight: bold;
+}
+
+.form-group label {
+	font-weight: normal;
+}
+
+.alert a {
+	text-decoration: none;
+}
+
+.img01 {
+	margin-top: 25px;
+}
+
+.nav-tabs .active a {
+	border-top: 3px solid #3c8dbc!important;
+}
+
+h5.box-title {
+	font-size: 12px!important;
+}
+
+.tab-pane h5.box-title {
+	font-size: 14px!important;
+}
+
+.tab-pane th {
+	background: #eee;
+}
+
+
+.box-primary .alert-danger,
+.box-primary .alert-success {
+	margin: 15px 10px!important;
+}
+
+.tab-content .with-border {
+	background: #3c8dbc!important;
+	color: #fff!important;
+}
+
+.custom-margin01 {
+	margin-top: 20px;
+}
+.box b {
+	border-bottom: 1px solid #333;
+	padding-bottom: 3px;
 }

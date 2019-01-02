@@ -41,18 +41,18 @@ class LoginController extends Controller
     protected function authenticated()
     {
         if ( Auth::user()->position == 1 ) {// do your margic here
-            return redirect()->route('/emp');
+            return redirect()->route('home');
         } else {
-            return redirect('/home');
+            return redirect('/emp');
          }
     }
 
-    public function username() /* login using name or email */
-    {
-       $login = request()->input('email');
-       $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-       request()->merge([$field => $login]);
-       return $field;
-    }
+    // public function username() /* login using name or email */
+    // {
+    //    $login = request()->input('email');
+    //    $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+    //    request()->merge([$field => $login]);
+    //    return $field;
+    // }
 
 }
